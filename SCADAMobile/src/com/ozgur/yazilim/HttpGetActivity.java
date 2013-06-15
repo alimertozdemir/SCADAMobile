@@ -81,6 +81,19 @@ public class HttpGetActivity extends Activity implements OnClickListener {
 			String str = "";
 			String inStr = "";
 			URL myUrl;
+			
+			String url = "http://www.alimertozdemir.com/init.php";
+			HttpClient client = new DefaultHttpClient();
+
+			try {
+			  client.execute(new HttpGet(url));
+			} catch(IOException e) {
+				Toast msg = Toast.makeText(getApplicationContext(), "Can't access to server", Toast.LENGTH_LONG);
+            	msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
+				e.printStackTrace();
+			}
+			
+			
 			try {
 				myUrl = new URL("http://www.alimertozdemir.com/csvtojson.php");
 				URLConnection myConn = myUrl.openConnection();
